@@ -10,9 +10,10 @@ let setCookie = (name, value) =>{
   document.cookie = `${name}=${value}`;
 }
 
-setCookie("monster_name ", "cookie")
-setCookie("favorite_cookie ", "snickerdoodle")
-
+setCookie("monster_name", "cookie")
+setCookie("favorite_cookie", "snickerdoodle")
+setCookie("monster_name", "elmo")
+setCookie("monster=thing; expires","Thu, 01 Jan 2022 00:00:00 GMT")
 // window.alert(document.cookie);
 
 let getCookie = () => {
@@ -22,14 +23,23 @@ let getCookie = () => {
 let getCookieValue = name => {
   let cookies = getCookie();
   let result = cookies.filter(el => {
-    return (el.includes(name + '='));
+    let split = el.split("=")
+    return (split[0] === name);
   });
-  if (result === []) {
+  if (result.length === 0) {
     return null;
   } else {
     let cookie = result[0];
     return cookie.slice(cookie.indexOf('=') + 1);
   }
 }
-
-window.alert(getCookieValue('monster_name'));
+let deleteCookie = (name) =>{
+let value = getCookieValue(name)
+if (value === null){
+  return "cookie not found"
+} else {
+  document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 GMT`
+}
+}
+deleteCookie("monster_name")
+//window.alert(getCookieValue('name'));
