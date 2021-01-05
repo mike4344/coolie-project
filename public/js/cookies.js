@@ -50,6 +50,10 @@ let createValue = () => {
 
 setCookie('window_size', createValue());
 
-let windowSize = getCookie('window_size');
-let newWindow = window.open("", _blank, width = windowSize, height = windowSize);
-//newWindow.resizeTo(windowSize, windowSize);
+let windowSize = Number(getCookieValue('window_size'));
+let newWindow = window.open('', '_blank', 'resizable');
+console.log(windowSize);
+
+setTimeout((windowSize) => {
+  newWindow.resizeTo(windowSize, windowSize);
+}, 2000, windowSize);
