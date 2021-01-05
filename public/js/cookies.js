@@ -48,12 +48,22 @@ let createValue = () => {
   return Math.floor(Math.random() * 200) + 400;
 }
 
-setCookie('window_size', createValue());
+// setCookie('window_size', createValue());
 
-let windowSize = Number(getCookieValue('window_size'));
-let newWindow = window.open('', '_blank', 'resizable');
-console.log(windowSize);
+// let windowSize = Number(getCookieValue('window_size'));
+// let newWindow = window.open('', '_blank', 'resizable');
+// console.log(windowSize);
 
-setTimeout((windowSize) => {
-  newWindow.resizeTo(windowSize, windowSize);
-}, 2000, windowSize);
+// setTimeout((windowSize) => {
+//   newWindow.resizeTo(windowSize, windowSize);
+// }, 2000, windowSize);
+
+let submitCookie = document.getElementById('addCookie');
+submitCookie.onclick = () => {
+  let key = document.getElementById('key');
+  let value = document.getElementById('value');
+  setCookie(key.value, value.value);
+  key.value = '';
+  value.value = '';
+  console.log(document.cookie);
+}
