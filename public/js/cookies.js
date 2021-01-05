@@ -43,3 +43,13 @@ if (value === null){
 }
 deleteCookie("monster_name")
 //window.alert(getCookieValue('name'));
+
+let createValue = () => {
+  return Math.floor(Math.random() * 200) + 400;
+}
+
+setCookie('window_size', createValue());
+
+let windowSize = getCookie('window_size');
+let newWindow = window.open("", _blank, width = windowSize, height = windowSize);
+//newWindow.resizeTo(windowSize, windowSize);
